@@ -30,7 +30,7 @@ public class Demo {
 	 */
 	@Test
 	public void findUserById() throws Exception{
-		SqlSession sqlSession=sqlSessionFactory.openSession();
+		SqlSession sqlSession=sqlSessionFactory.openSession(); 
 		User user=sqlSession.selectOne("com.qgq.mybatismapper.UserMapper.findUserById", 1);
 		sqlSession.close();
 		System.out.println(user);
