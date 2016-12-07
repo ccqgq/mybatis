@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+	<!-- 根据id查找用户，返回一条数据 -->
+	<select id="findUserById" parameterType="int" resultType="com.qgq.po.User">
+		select * from user where id=#{id}
+	</select>
+	
+	<!-- 模糊查询，可能返回多条数据 -->
+	<select id="findUserByUsername" parameterType="java.lang.String" resultType="com.qgq.po.User">
+		<!-- select * from user where username like #{username} -->
+		
+		<!-- 模糊查询的第二中写法，在代码层只需要写条件即可 -->
+		select * from user where username like '%${value}%'
+	</select>
+	
+	<!-- 向数据库中添加一条数据 -->
+	<insert id="insertUser" parameterType="com.qgq.po.User">
+		<selectKey keyProperty="id" order="AFTER" resultType="int">
+			select LAST_INSERT_ID();
+		</selectKey>
+		insert into user (username,sex,birthday,address) values (#{username},#{sex},#{birthday},#{address})
+		
+		<!-- 使用uuid作为主键加入到数据库中 -->
+		<!-- <selectKey keyProperty="id" order="BEFORE" resultType="string">
+			select uuid()
+		</selectKey>
+		insert into user (id,username,sex,birthday,address) values (#{id},#{username},#{sex},#{birthday},#{address}) -->
+	</insert>
+	
+	<!-- 删除一条数据 -->
+	<delete id="delUserByID" parameterType="int">
+		delete from user where id=#{id}
+	</delete>
+	
+	<!-- 修改信息 -->
+	<update id="updataUser" parameterType="com.qgq.po.User" >
+		update user set username=#{username},sex=#{sex},address=#{address} where id=#{id}
+	</update>
+</mapper>
