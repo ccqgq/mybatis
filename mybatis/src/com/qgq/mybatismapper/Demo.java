@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.qgq.po.User;
+import com.qgq.po.UserCustom;
+import com.qgq.po.UserQueryVo;
 
 public class Demo {
 	private SqlSessionFactory sqlSessionFactory;
@@ -30,9 +32,13 @@ public class Demo {
 	 */
 	@Test
 	public void findUserById() throws Exception{
-		SqlSession sqlSession=sqlSessionFactory.openSession(); 
-		User user=sqlSession.selectOne("com.qgq.mybatismapper.UserMapper.findUserById", 1);
-		sqlSession.close();
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+		UserQueryVo userQueryVo=new UserQueryVo();
+		UserCustom userCustom=new UserCustom();
+		userCustom.setId(1);
+		userQueryVo.setUserCustom(userCustom);
+		User user=userMapper.findUserById(userQueryVo);
 		System.out.println(user);
 	}
 	
@@ -42,23 +48,21 @@ public class Demo {
 	@Test
 	public void fingUserByUsername() throws Exception{
 		SqlSession sqlSession=sqlSessionFactory.openSession();
-		List<User> list=sqlSession.selectList("com.qgq.mybatismapper.UserMapper.findUserByUsername", "%啦%");
-		sqlSession.close();
+		UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+		List<User> list=userMapper.findUserByUsername("%g%");
 		System.out.println(list);
 	}
 	
 	@Test
 	public void insert() throws Exception{
 		SqlSession sqlSession=sqlSessionFactory.openSession();
+		UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
 		User user=new User();
-		user.setAddress("ccc");
+		user.setUsername("张松");
 		user.setBirthday(new Date());
-		user.setSex("男");
-		user.setUsername("qgq");
-		sqlSession.insert("com.qgq.mybatismapper.UserMapper.insertUser", user);
+		userMapper.insertUser(user);
 		sqlSession.commit();
 		sqlSession.close();
-		
 	}
 	
 	/*
@@ -67,7 +71,8 @@ public class Demo {
 	@Test
 	public void count() throws Exception{
 		SqlSession sqlSession=sqlSessionFactory.openSession();
-		int i=sqlSession.selectOne("com.qgq.mybatismapper.UserMapper.count");
+		UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+		int i=userMapper.count();
 		sqlSession.close();
 		System.out.println(i);
 	}
