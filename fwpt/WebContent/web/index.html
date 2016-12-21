@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/fwpt/css/bootstrap.min.css">
+<script type="text/javascript" src="/fwpt/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	function login() {
+		var number=$("#number").val();
+		var password=$("#password").val();
+		var juese=$("#juese").val();
+		//alert(number+password+juese);
+		$.ajax({
+			url:"/fwpt/login",
+	        type:"POST",
+	        dataType:"json",
+	        data:"number="+number+"&password="+password+"&juese="+juese,
+	        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',//防止乱码
+	        success:function(data){
+	        	if(data=="admin"){
+	        		window.location.href = "/fwpt/web/admin/admin.html";
+	        	}else if (data=="student") {
+					
+				}else if (data=="teacher") {
+					
+				}else if (data=="shibai") {
+					var span=$("#span")[0];
+					span.innerHTML='<p>帐号、密码或角色选择错误</p>'
+				}
+	        }
+		});
+	}
+	
+</script>
+</head>
+<body>
+<div style="height: 50px;"></div>
+	
+	 <div class="container">
+			<h1 class="page-header"> 用户登录</h1>
+			<form class="form-horizontal">
+			<span id="span" style="color: red;"></span>
+				<div class="form-group">
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="number" id="number" placeholder="学号/职工号/管理员号"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-5">
+						<input type="password" class="form-control"  name="password" id="password" placeholder="密码"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-5">
+						<select class="form-control" name="juese" id="juese">
+						  <option value="student">学生</option>
+						  <option value="teacher">老师</option>
+						  <option value="admin">管理员</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-5">
+						<button class="btn btn-primary" type="button" onclick="login();"> 登    录</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	
+		<div style="height: 1500px;"></div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+html {
+    font-size: 62.5%;
+    /*10 ÷ 16 × 100% = 62.5%*/
+}
+body{
+	font-family: "Helvetica Neue", Helvetica,
+	 Microsoft Yahei, Hiragino Sans GB,
+	  WenQuanYi Micro Hei, sans-serif;
+}
+header{
+	width: 80%;
+	height: 100px;
+	position: relative;
+	margin: 0 auto;
+}
+.logo{
+	width: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 20px;
+}
+.logo img{
+	width: 100%;
+}
+.people{
+	float: right;
+	font-size: 1.6rem;
+	margin-top: 70px;
+}
+.people .user{
+	float: left;
+	margin-right: 10px;
+}
+.people .out{
+	float: left;
+}
+
+.fcenter{
+	position: relative;
+}
+.center{
+	position: absolute;
+	right: 50%;
+	transform: translateX(50%);
+}
+.wid{
+	width: 500px;
+}
+.mar{
+	margin: 0 6%;
+}
+
+.table tr td a{
+	margin-right: 10px;
+}
+.c-form{
+	width: 50%;
+}
+.select{
+	display: inline-block;
+	padding: 6px 6px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.select:hover{
+	color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+  cursor: pointer;
+}
