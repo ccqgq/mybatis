@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+  <link href="/fwpt/css/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/fwpt/css/qgq.css" rel="stylesheet">
+  <script type="text/javascript" src="/fwpt/js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="/fwpt/css/dist/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+	<header>
+		<div class="logo .col-md-8 .col-sm-8">
+			<a href="/fwpt/web/admin/admin.html"><img src="/fwpt/img/1.png" alt="..." class="img-rounded"></a>
+		</div>
+		<div class="people .col-md-4 .col-sm-4">
+			<div class="user" id="user"></div>
+			<div style="display: none;" id="juese">admin</div>
+			<div class="out"><a href="http://localhost:8080/fwpt/logout?juese=admin">退出</a></div>
+		</div>
+	</header>
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+	   <div class="collapse navbar-collapse fcenter" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav center wid">
+	        <li class="dropdown mar">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理 <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="" onclick="tea();">教师管理</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">学生管理</a></li>
+	          </ul>
+	        </li>
+	        <li class="dropdown mar">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">课程管理 <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">课程计划</a></li>
+	          </ul>
+	        </li>
+	        <li class="dropdown mar">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">信息发布 <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">就业信息</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">通知/通告</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	<div style="height: 50px;"></div>
+	<div class="container">
+		<form class="navbar-form navbar-left" role="search" >
+		  <div class="form-group">
+		    <input type="text" class="form-control" name="value" placeholder="Search" id="Search">
+		  </div>
+		  <select class="select" name="select" id="select"> 
+		  	<option value="number">职工号</option>
+		  	<option value="name">姓名</option>
+		  </select>
+		  <button type="button"  class="btn btn-default" onclick="get(1,null,null);">Submit</button>
+		</form>
+		<form action="${pageContext.request.contextPath}/tea_addPage.action">
+			<button type="submit" class="btn btn-success" style="float:right">新增</button>
+		</form>
+		
+		<table class="table table-borderd table-striped table-hover" id="table">
+		</table>
+		<ul class="pagination" style="float:right " id="ul"></ul>
+	</div>
+	 <script type="text/javascript" src="/fwpt/js/myjs/me.js"></script>
+	 <script type="text/javascript" src="/fwpt/js/myjs/admin.js"></script>
+</body>
+</html>
