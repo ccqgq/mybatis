@@ -5,16 +5,19 @@
 <title>Insert title here</title>
   <link href="/fwpt/css/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="/fwpt/css/qgq.css" rel="stylesheet">
+  <script type="text/javascript" src="/fwpt/js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="/fwpt/css/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 	<header>
 		<div class="logo .col-md-8 .col-sm-8">
-			<img src="/fwpt/img/1.png" alt="..." class="img-rounded">
+			<a href="/fwpt/web/admin/admin.html"><img src="/fwpt/img/1.png" alt="..." class="img-rounded"></a>
 		</div>
 		<div class="people .col-md-4 .col-sm-4">
-			<div class="user">cc</div>
-			<div class="out"><a href="#">退出</a></div>
+			<div class="user" id="user"></div>
+			<div style="display: none;" id="juese">admin</div>
+			<div class="out"><a href="http://localhost:8080/fwpt/logout?juese=admin">退出</a></div>
 		</div>
 	</header>
 	<nav class="navbar navbar-default" role="navigation">
@@ -27,14 +30,12 @@
 	        <span class="icon-bar"></span>
 	      </button>
 	    </div>
-
-	   
 	   <div class="collapse navbar-collapse fcenter" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav center wid">
 	        <li class="dropdown mar">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理 <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">教师管理</a></li>
+	            <li><a href="/fwpt/web/admin/tea.html">教师管理</a></li>
 	            <li class="divider"></li>
 	            <li><a href="#">学生管理</a></li>
 	          </ul>
@@ -57,7 +58,8 @@
 	    </div>
 	  </div>
 	</nav>
-	<script type="text/javascript" src="/fwpt/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/fwpt/css/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/fwpt/js/myjs/me.js"></script>
+<script type="text/javascript" src="/fwpt/js/myjs/admin.js"></script>
+
 </body>
 </html>

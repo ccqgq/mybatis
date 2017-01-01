@@ -4,7 +4,9 @@ package com.fwpt.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -65,4 +67,21 @@ public class UserController {
 		}
 		return juese;
 	}
+	
+	@RequestMapping(value="logout",method=RequestMethod.GET )
+	public String logout(HttpSession session,String juese){
+		session.removeAttribute(juese);
+		System.out.println("11111111");
+		return "/web/index.html";
+	}
+	
+	@RequestMapping(value="getSession")
+	@ResponseBody
+	public Admin session(HttpSession session,String juese){
+		System.out.println(juese);
+		Admin admin=(Admin) session.getAttribute(juese);
+		System.out.println(admin);
+		return admin;
+	}
+	
 }
