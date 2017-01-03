@@ -7,6 +7,7 @@
   <link href="/fwpt/css/qgq.css" rel="stylesheet">
   <script type="text/javascript" src="/fwpt/js/jquery-3.1.1.min.js"></script>
   <script type="text/javascript" src="/fwpt/css/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/fwpt/css/style.css">
   
 </head>
 <body>
@@ -71,15 +72,99 @@
 		  </select>
 		  <button type="button"  class="btn btn-default" onclick="get(1,null,null);">Submit</button>
 		</form>
-		<form action="${pageContext.request.contextPath}/tea_addPage.action">
-			<button type="submit" class="btn btn-success" style="float:right">新增</button>
+		<form>
+			<button type="button" class="btn btn-success cd-popup-trigger3" style="float:right" onclick="danchuang();">新增</button>
 		</form>
 		
 		<table class="table table-borderd table-striped table-hover" id="table">
 		</table>
 		<ul class="pagination" style="float:right " id="ul"></ul>
 	</div>
+<div class="cd-popup3">
+    <div class="cd-popup-container3">
+		<div class="container c-form">
+			<div class="form-group">
+
+			</div>
+		  <form class="form-horizontal" role="form" method="post" action="http://localhost:8080/fwpt/admin/addTea" >
+		  <div class="form-group">
+		    <label for="name" class="col-sm-2 control-label">姓名:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="number" class="col-sm-2 control-label">职工号:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="number" name="number" placeholder="职工号">
+		    </div>
+		  </div>
+		  <div class="form-group">
+			  <label for="sex" class="col-sm-2 control-label">性别:</label>
+			  <label class="radio-inline">
+			    <input type="radio" name="sxe" value="男"> 男
+			  </label>
+			  <label class="radio-inline">
+			    <input type="radio" name="sxe" value="女"> 女
+			  </label>
+		  </div>
+		  <div class="form-group">
+		    <label for="college" class="col-sm-2 control-label">所在学院:</label>
+		    <div class="col-sm-10">
+		      	<select class="form-control" name="academe">
+				  <option value="电子信息与电气工程学院">电子信息与电气工程学院</option>
+				  <option value="电子信息与电气工程学院">电子信息与电气工程学院</option>
+				</select>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="college" class="col-sm-2 control-label">职称:</label>
+		    <div class="col-sm-10">
+		      	<select class="form-control" name="title">
+				  <option value="助教">助教</option>
+				  <option value="讲师">讲师</option>
+
+				</select>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">提交</button>
+		    </div>
+		  </div>
+		</form>
+		</div>
+		<a href="#0" class="cd-popup-close">X</a>
+    </div>
+</div>
+	
 	 <script type="text/javascript" src="/fwpt/js/myjs/me.js"></script>
 	 <script type="text/javascript" src="/fwpt/js/myjs/admin.js"></script>
+	 <script type="text/javascript">
+	 	function danchuang() {
+	 		jQuery(document).ready(function($){
+	 			 
+	 			//打开窗口
+	 	        $('.cd-popup-trigger3').on('click', function(event){
+	 	            event.preventDefault();
+	 	            $('.cd-popup3').addClass('is-visible3');
+	 	            //$(".dialog-addquxiao").hide()
+	 	        });
+	 	        //关闭窗口
+	 	        $('.cd-popup3').on('click', function(event){
+	 	            if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup3') ) {
+	 	                event.preventDefault();
+	 	                $(this).removeClass('is-visible3');
+	 	            }
+	 	        });
+	 	        //ESC关闭
+	 	        $(document).keyup(function(event){
+	 	            if(event.which=='27'){
+	 	                $('.cd-popup3').removeClass('is-visible3');
+	 	            }
+	 	        });
+	 	    });
+		}
+	 </script>
 </body>
 </html>

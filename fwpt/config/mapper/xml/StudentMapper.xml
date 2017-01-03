@@ -10,4 +10,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from student where number=#{number} and password=#{password}
 	</select>
 	
+	<!-- 查询学生 -->
+	<select id="findStudent" parameterType="bean" resultType="student">
+		select * from student
+		<where>
+			<if test="name !=null and name!=''">
+				and name like '%${name}%'
+			</if>
+			<if test="number != null and name != ''">
+				and number like '%${number}%'
+			</if>
+		</where>
+		limit #{begin} , #{limit}
+	</select>
+	
+	<!-- 获得查询的总数量 -->
+	<select id="count" parameterType="bean" resultType="int">
+		select count(*) from student
+		<where>
+			<if test="name != null and name != ''">
+				and name like '%${name}%'
+			</if>
+			<if test="number != null and number != ''" >
+				and number like '%${number}%'
+			</if>
+		</where>
+	</select>
+	
 </mapper>

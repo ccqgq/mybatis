@@ -11,4 +11,8 @@ public interface TeacherMapper {
 	public List<Teacher> findTeacher(Bean bean);
 
 	public int count(Bean bean);
+
+	public void del(Integer id);
+
+	public void add(Teacher teacher);
 }

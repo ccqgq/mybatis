@@ -36,4 +36,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
+	
+	<!-- 根据id删除教师 -->
+	<delete id="del" parameterType="int">
+		delete from teacher where tid=#{tid}
+	</delete>
+	
+	<!-- 添加教师 -->
+	<insert id="add" parameterType="teacher">
+		insert into teacher values(null,#{name},#{number},#{password},#{sxe},#{title},#{academe})
+	</insert>
+	
+	<!-- 修改教师 -->
 </mapper>

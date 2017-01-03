@@ -43,7 +43,7 @@ public class TeacherServiceImpl implements TeacherService {
 			page = 1;
 		}
 		pageBean.setPage(page);
-		Integer limit = 1;
+		Integer limit = 10;
 		Integer totalpage = 0;
 		pageBean.setLimit(limit);
 		Integer totalcount = count(bean);
@@ -67,6 +67,19 @@ public class TeacherServiceImpl implements TeacherService {
 	private Integer count(Bean bean) {
 		int i= teacherMapper.count(bean);
 		return i;
+	}
+	
+	@Transactional
+	public void del(Integer id) {
+		
+		teacherMapper.del(id);
+		//还要删除关联教师的课程计划以及课程
+	}
+	
+	@Transactional
+	public void add(Teacher teacher) {
+		teacher.setPassword(teacher.getNumber());
+		teacherMapper.add(teacher);
 	}
 
 

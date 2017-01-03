@@ -10,7 +10,6 @@ function get(page,search,select) {
 			dataType:"json",
 			scriptCharset: "utf-8",
 			success:function(data){
-				//alert(data.list.length);
 				var table =$("#table")[0];
 				var inn = "<tr>"+
 						  "<td>姓名</td>"+
@@ -35,4 +34,4 @@ function get(page,search,select) {
 			}
 		});
 	}
-get();
+get(1,null,null);
